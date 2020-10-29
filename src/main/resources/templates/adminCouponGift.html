@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>礼券赠送</title>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/css/userMovieDetail.css"/>
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/adminCouponGift.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage" style="color: #9d9d9d"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage" style="color: #9d9d9d"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/member/manage" style="color: #9d9d9d"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic" style="color: #9d9d9d"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation" class="active"><a href="/admin/account/manage"><i class="icon-user-md"></i> 用户管理</a></li>
+        </ul>
+    </div>
+
+    <div class="content-container">
+        <div class="content-header">
+            <span class="title gray-text">礼券赠送</span>
+<!--            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#userModal"><i class="icon-plus-sign"></i> 新增用户</button>-->
+<!--        </div>-->
+        <div class="seesion-container">
+
+
+            <div class="table-wrapper">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>礼券名称</th>
+                        <th>礼券描述</th>
+                        <th>金额限定</th>
+                        <th>优惠金额</th>
+                        <th>起始时间</th>
+                        <th>结束时间</th>
+                        <th>赠送礼券</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="coupon-select-body">
+                    </tbody>
+                </table>
+                <h4 id="coupon-none-hint" style="display: none;">没有可用的礼券</h4>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

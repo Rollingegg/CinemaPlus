@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Theatre - 会员</title>
+
+    <link rel="icon" type="image/png" href="../images/icon.png"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/newCommon.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/style.css"/>
+    <link rel="stylesheet" href="/css/cssForIndex/style-responsive.css">
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userMember.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!--    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>-->
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/userMember.js"></script>
+
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+    <div class="item">
+        <div class="spinner">
+        </div>
+    </div>
+</div>
+
+<div class="opacity-nav">
+
+    <ul class="menu-fullscreen">
+        <li><a href="/user/home">回到首页</a></li>
+        <li><a href="/user/movie">电影列表</a></li>
+        <li><a href="/user/buy">我的电影票</a></li>
+        <li><a href="/user/consumption">消费记录</a></li>
+        <li><a href="/user/member">我的卡包</a></li>
+        <li id="logout"><a href="#">登出</a></li>
+    </ul>
+
+</div>
+
+
+<!--Header-->
+<header id="fullscreen">
+
+    <div class="logo" id="full"><a class="ajax-link" href="/user/home">Random Theatre</a></div>
+
+    <div class="menu-index" id="button">
+        <i class="fa fa-bars"></i>
+    </div>
+
+</header>
+
+<div class="clear"></div>
+
+<div class="content" id="ajax-content">
+
+
+    <div class="text-intro" id="site-type">
+
+        <h1>我的会员</h1>
+        <!--        <h1 class="typewrite"><span>Welcome. </span></h1>-->
+        <!--        <p>看看何时来亲身体验。</p>-->
+
+    </div>
+
+    <div class="content-container">
+        <!--非会员列出所有可购买的会员卡-->
+        <ul id="card-on-list">
+            <!--            <div class="card col-md-8 col-md-offset-2" id="nonmember-card" style="display: none;">-->
+            <!--                <div class="header">-->
+            <!--                    <div class="title">会员卡</div>-->
+            <!--                    <div class="state">非会员</div>-->
+            <!--                </div>-->
+            <!--                <div class="line">-->
+            <!--                    <div>成为VIP会员</div>-->
+            <!--                    <hr/>-->
+            <!--                </div>-->
+            <!--                <div class="info">-->
+            <!--                    <div class="price"><b id="member-buy-price"></b>元/张</div>-->
+            <!--                    <div id="member-buy-description" class="description"></div>-->
+            <!--                    <div class="discount" id="member-buy-discount"></div>-->
+            <!--                    <button onclick="buyClick()" data-toggle="modal" data-target="#buyModal">立即购买</button>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </ul>
+        <!--会员-->
+        <div class="card col-md-8 col-md-offset-2" id="member-card" style="visibility: hidden;">
+            <div class="header">
+                <div id="card-type" class="card-title">会员卡</div>
+                <div class="state">VIP</div>
+            </div>
+            <div class="line">
+                <div>会员信息</div>
+                <hr/>
+            </div>
+            <div class="info">
+                <div class="content">
+                    <div class="line">
+                        <div><b>会员卡号：</b></div>
+                        <div id="member-id"></div>
+                    </div>
+                    <div class="line">
+                        <div><b>入会日期：</b></div>
+                        <div id="member-joinDate"></div>
+                    </div>
+                    <div class="line">
+                        <div><b>充值优惠：</b></div>
+                        <div id="member-description"></div>
+                    </div>
+                    <div class="line">
+                        <div><b>会员折扣：</b></div>
+                        <div id="member-discount"></div>
+                    </div>
+                    <hr/>
+
+                    <div class="line">
+                        <div><b>余额：</b></div>
+                        <div id="member-balance"></div>
+                    </div>
+                </div>
+                <button onclick="chargeClick()">立 即 充 值</button>
+            </div>
+        </div>
+
+        <!--优惠券-->
+        <div class="card col-md-8 col-md-offset-2">
+            <div class="header">
+                <div class="title">优惠券</div>
+            </div>
+            <div id="coupon-list"></div>
+        </div>
+    </div>
+
+    <!--    class="modal fade"-->
+    <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">购买会员卡</h4>
+                </div>
+                <div class="modal-body" id="userMember-form">
+                    <div class="form-group">
+                        <label for="userMember-cardNum"><span class="error-text">*</span>银行卡号<br/></label>
+                        <input class="form-control" id="userMember-cardNum" placeholder="请输入银行卡号">
+                        <p id="userMember-cardNum-error" class="notice">银行卡号不能为空</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="userMember-cardPwd"><span class="error-text">*</span>密码<br/></label>
+                        <input type="password" class="form-control" id="userMember-cardPwd" placeholder="请输入密码">
+                        <p id="userMember-cardPwd-error" class="notice">密码不能为空</p>
+                    </div>
+                    <div class="form-group" id="userMember-amount-group">
+                        <label for="userMember-amount"><span class="error-text">*</span>金额<br/></label>
+                        <input type="number" class="form-control" id="userMember-amount" placeholder="请输入充值金额">
+                        <p id="userMember-amount-error" class="notice">充值金额需要大于0元</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="confirmCommit()" data-toggle="modal"
+                            data-target="#buyModal">确定
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Scripts-->
+<!--<script src="/js/jquery.js"></script>-->
+<!--<script src="/js/jsForIndex/jquery.min.js"></script>-->
+<script src="/js/jsForIndex/jquery.easing.min.js"></script>
+<script src="/js/jsForIndex/modernizr.custom.42534.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/jquery.waitforimages.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/typed.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/masonry.pkgd.min.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/jquery.jkit.1.2.16.min.js"></script>
+
+<script src="/js/jsForIndex/script.js" type="text/javascript"></script>
+
+<script>
+    $('#button').on('click', function () {
+        $(".opacity-nav").fadeToggle("slow", "linear");
+        // Animation complete.
+    });
+</script>
+
+</body>
+</html>

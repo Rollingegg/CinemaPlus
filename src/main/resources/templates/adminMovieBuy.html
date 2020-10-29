@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影销售</title>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminAccountDetail.css"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/movieDetail.js"></script>
+    <script src="/js/adminMovieBuy.js"></script>
+    <script src="/js/adminRoleManage.js"></script>
+    <script src="/js/movieDetail.js"></script>
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage" style="color: #9d9d9d"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage" style="color: #9d9d9d"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/member/manage" style="color: #9d9d9d"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic" style="color: #9d9d9d"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation"><a href="/admin/account/manage" style="color: #9d9d9d"><i class="icon-user-md"></i> 用户管理</a></li>
+
+        </ul>
+    </div>
+    <div class="content-container">
+        <div class="content-header" style="height: max-content">
+            <img id="movie-img" width="320px">
+            <div class="movie-basic-info">
+                <table>
+                    <tr>
+                        <td>
+                            <div style="margin-top: 40px"><span class="title" id="movie-name"></span></div>
+                        </td>
+                        <td align="right">
+                        </td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;"><span>简 介 ：</span><span id="movie-description" class="gray-text"></span>
+                </div>
+                <div style="line-height: 26px"><span>上 映 ：</span><span id="movie-startDate"></span></div>
+                <div style="line-height: 26px"><span>类 型 ：</span><span id="movie-type"></span></div>
+                <div style="line-height: 26px"><span>地 区 ：</span><span id="movie-country"></span></div>
+                <div style="line-height: 26px"><span>语 言 ：</span><span id="movie-language"></span></div>
+                <div style="line-height: 26px"><span>导 演 ：</span><span id="movie-director"></span></div>
+                <div style="line-height: 26px"><span>主 演 ：</span><span id="movie-starring"></span></div>
+                <div style="line-height: 26px"><span>编 剧 ：</span><span id="movie-writer"></span></div>
+            </div>
+        </div>
+        <div class="seesion-container" style="margin-top: 60px">
+            <h1 id="none-hint" style="display: none;">暂无排片</h1>
+            <div id="schedule" style="display: none;">
+                <ul class="nav nav-tabs" id="schedule-date">
+                </ul>
+
+                <div class="table-wrapper">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>放映开始时间</th>
+                            <th>放映结束时间</th>
+                            <th>放映厅</th>
+                            <th>票价（元）</th>
+                            <th>选座购票</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="schedule-body">
+                        </tbody>
+                    </table>
+                    <h4 id="date-none-hint" style="display: none;">所选日期暂无排片</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

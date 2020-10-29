@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Theatre - 消费记录</title>
+
+    <link rel="icon" type="image/png" href="../images/icon.png"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/newCommon.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/style.css"/>
+    <link rel="stylesheet" href="/css/cssForIndex/style-responsive.css">
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userConsumption.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!--<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>-->
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/userConsumption.js"></script>
+
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+    <div class="item">
+        <div class="spinner">
+        </div>
+    </div>
+</div>
+
+<div class="opacity-nav">
+
+    <ul class="menu-fullscreen">
+        <li><a href="/user/home">回到首页</a></li>
+        <li><a href="/user/movie">电影列表</a></li>
+        <li><a href="/user/buy">我的电影票</a></li>
+        <li><a href="/user/consumption">消费记录</a></li>
+        <li><a href="/user/member">我的卡包</a></li>
+        <li id="logout"><a href="#">登出</a></li>
+    </ul>
+
+</div>
+
+
+<!--Header-->
+<header id="fullscreen">
+
+    <div class="logo" id="full"><a class="ajax-link" href="/user/home">Random Theatre</a></div>
+
+    <div class="menu-index" id="button">
+        <i class="fa fa-bars"></i>
+    </div>
+
+</header>
+
+<div class="clear"></div>
+
+<div class="content" id="ajax-content">
+
+
+    <div class="text-intro" id="site-type">
+
+        <h1>您的消费记录</h1>
+        <!--        <h1 class="typewrite"><span>Welcome. </span></h1>-->
+<!--        <p>看看何时来亲身体验。</p>-->
+        <br>
+        <form>
+            您要查看的消费记录：
+            <select id="mySelect">
+                <option value="ticket">电影票购买记录</option>
+                <option value="charge">充值记录</option>
+            </select>
+        </form>
+
+
+
+    </div>
+
+    <div class="content-container">
+        <div class="card">
+            <div class="header">
+<!--                <div class="title">-->
+<!--                    消费记录-->
+<!--                </div>-->
+            </div>
+            <div class="table-wrapper">
+                <table class="table" id="ticketConsumptionTable">
+                    <thead>
+                    <tr>
+                        <th><b style="color: #464547">电影票名称</b></th>
+                        <th><b style="color: #464547">数量</b></th>
+                        <th><b style="color: #464547">总价</b></th>
+                        <th><b style="color: #464547">折扣</b></th>
+                        <th><b style="color: #464547">支出/回款</b></th>
+                        <th><b style="color: #464547">支付方式</b></th>
+                        <th><b style="color: #464547">支付时间</b></th>
+                        <th><b style="color: #464547">详情</b></th>
+                    </tr>
+                    </thead>
+                    <tbody id="ticketConsumptionBody">
+                    </tbody>
+                </table>
+                <table class="table hidden" id="chargeConsumptionTable">
+                    <thead>
+                    <tr>
+                        <th><b style="color: #464547">名称</b></th>
+                        <th><b style="color: #464547">金额</b></th>
+                        <th><b style="color: #464547">优惠</b></th>
+                        <th><b style="color: #464547">实际支出</b></th>
+                        <th><b style="color: #464547">支付方式</b></th>
+                        <th><b style="color: #464547">支付时间</b></th>
+                    </tr>
+                    </thead>
+                    <tbody id="chargeConsumptionBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Scripts-->
+
+<script src="/js/jsForIndex/jquery.min.js"></script>
+<script src="/js/jsForIndex/jquery.easing.min.js"></script>
+<script src="/js/jsForIndex/modernizr.custom.42534.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/jquery.waitforimages.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/typed.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/masonry.pkgd.min.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/jquery.jkit.1.2.16.min.js"></script>
+
+<script src="/js/jsForIndex/script.js" type="text/javascript"></script>
+
+<script>
+    $('#button').on('click', function () {
+        $(".opacity-nav").fadeToggle("slow", "linear");
+        // Animation complete.
+    });
+</script>
+
+</body>
+</html>

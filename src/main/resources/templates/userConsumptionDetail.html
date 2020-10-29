@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Theatre - 购票</title>
+    <link rel="icon" type="image/png" href="../images/icon.png"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/newCommon.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/style.css"/>
+    <link rel="stylesheet" href="/css/cssForIndex/style-responsive.css">
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userBuy.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userMember.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/consumptionDetail.js"></script>
+
+</head>
+<body>
+<div class="preloader" id="preloader">
+    <div class="item">
+        <div class="spinner">
+        </div>
+    </div>
+</div>
+
+<div class="opacity-nav">
+
+    <ul class="menu-fullscreen">
+        <li><a href="/user/home">回到首页</a></li>
+        <li><a href="/user/movie">电影列表</a></li>
+        <li><a href="/user/buy">我的电影票</a></li>
+        <li><a href="/user/consumption">消费记录</a></li>
+        <li><a href="/user/member">我的卡包</a></li>
+        <li id="logout"><a href="#">登出</a></li>
+    </ul>
+
+</div>
+
+
+<!--Header-->
+<header id="fullscreen">
+
+    <div class="logo" id="full"><a class="ajax-link" href="/user/home">Random Theatre</a></div>
+
+    <div class="menu-index" id="button">
+        <i class="fa fa-bars"></i>
+    </div>
+
+</header>
+
+<div class="clear"></div>
+
+
+<div class="content-container" style="margin-top: 140px; width: max-content" align="center">
+    <div class="card" style="width: 1000px">
+        <div class="header">
+            <div class="title">
+                购买的电影票
+            </div>
+        </div>
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+<!--                <tr>-->
+<!--                    <th><b>电影名称</b></th>-->
+<!--                    <th><b>影厅名</b></th>-->
+<!--                    <th><b>座位</b></th>-->
+<!--                    <th><b>放映时间</b></th>-->
+<!--                    <th><b>预计结束时间</b></th>-->
+<!--                    <th><b>状态</b></th>-->
+<!--                </tr>-->
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card" style="width: 1000px">
+        <div class="header">
+            <div class="title">使用的优惠券</div>
+        </div>
+        <div id="coupon-list"></div>
+    </div>
+</div>
+
+<!--Scripts-->
+
+<script src="/js/jsForIndex/jquery.min.js"></script>
+<script src="/js/jsForIndex/jquery.easing.min.js"></script>
+<script src="/js/jsForIndex/modernizr.custom.42534.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/jquery.waitforimages.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/typed.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/masonry.pkgd.min.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<script src="/js/jsForIndex/jquery.jkit.1.2.16.min.js"></script>
+
+<script src="/js/jsForIndex/script.js" type="text/javascript"></script>
+
+<script>
+    $('#button').on('click', function () {
+        $(".opacity-nav").fadeToggle("slow", "linear");
+        // Animation complete.
+    });
+</script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>购票</title>-->
+<!--    &lt;!&ndash; Bootstrap 核心 CSS 文件 &ndash;&gt;-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>-->
+<!--    &lt;!&ndash; font-asesome图标库 &ndash;&gt;-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>-->
+
+<!--    &lt;!&ndash; 引入css样式文件 &ndash;&gt;-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/common.css"/>-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/userBuy.css"/>-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/userMember.css"/>-->
+
+<!--    &lt;!&ndash; 引入js脚本文件 &ndash;&gt;-->
+<!--    &lt;!&ndash; jquery &ndash;&gt;-->
+<!--    <script src="/js/jquery.js"></script>-->
+<!--    &lt;!&ndash; Bootstrap 核心 JavaScript 文件 &ndash;&gt;-->
+<!--    <script src="/js/bootstrap.js"></script>-->
+<!--    <script src="/js/request.js"></script>-->
+<!--    <script src="/js/consumptionDetail.js"></script>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<div class="nav-top-container">-->
+<!--    <div class="nav-logo title">NJU-Se电影购票系统</div>-->
+<!--    <ul class="nav nav-pills">-->
+<!--        <li role="presentation"><a href="/user/home">首页</a></li>-->
+<!--        <li role="presentation"><a href="/user/movie">电影</a></li>-->
+<!--    </ul>-->
+<!--    <div class="btn-group">-->
+<!--        <button class="nav-user-container btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"-->
+<!--                aria-expanded="false">-->
+<!--            <img class="avatar-sm" src="/images/defaultAvatar.jpg"/>-->
+<!--            <span class="gray-text" style="vertical-align: middle">用户A&nbsp;<span class="caret"></span></span>-->
+<!--        </button>-->
+<!--        <ul class="dropdown-menu">-->
+<!--            <li><a href="#">电影票</a></li>-->
+<!--            <li><a href="/user/consumption">消费记录</a></li>-->
+<!--            <li><a href="/user/member">卡包</a></li>-->
+<!--            <li id="logout"><a href="#">登出</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="content-container">-->
+<!--    <div class="card col-md-8 col-md-offset-2">-->
+<!--        <div class="header">-->
+<!--            <div class="title">-->
+<!--                购买的电影票-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="table-wrapper">-->
+<!--            <table class="table">-->
+<!--                <thead>-->
+<!--                &lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <th><b>电影名称</b></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <th><b>影厅名</b></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <th><b>座位</b></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <th><b>放映时间</b></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <th><b>预计结束时间</b></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <th><b>状态</b></th>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="card col-md-8 col-md-offset-2">-->
+<!--        <div class="header">-->
+<!--            <div class="title">使用的优惠券</div>-->
+<!--        </div>-->
+<!--        <div id="coupon-list"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

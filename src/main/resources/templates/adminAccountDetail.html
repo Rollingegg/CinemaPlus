@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户资料</title>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminAccountDetail.css"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/adminAccountDetail.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage" style="color: #9d9d9d"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage" style="color: #9d9d9d"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/manage" style="color: #9d9d9d"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/member/manage" style="color: #9d9d9d"><i class="icon-credit-card"></i> 会员管理</a> </li>
+            <li role="presentation"><a href="/admin/cinema/statistic" style="color: #9d9d9d"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation" class="active"><a href="/admin/account/manage"><i class="icon-user-md"></i> 用户管理</a></li>
+        </ul>
+    </div>
+    <div class="content-container">
+        <div class="content-header">
+            <img id="user-img" src="/images/defaultAvatar.jpg">
+            <div class="user-basic-info">
+                <div><span class="title" id="user-name"></span></div>
+                <div id="user-level-div"><span>账户类别 ：</span><span id="user-level"></span></div>
+                <div id="user-consumption-div"><span>消费金额（元）：</span><span id="user-consumption"></span></div>
+                <div id="user-card-div"><span>会员卡余额（元）：</span><span id="user-card"></span></div>
+                <div class="user-operations">
+                    <button type="button" class="btn btn-primary" id="coupon-btn"><span>赠送礼券</span></button>
+                    <button type="button" class="btn btn-danger" id="delete-btn" data-backdrop="static" data-toggle="modal" data-target="#userDeleteModal"><span>删除账户</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="userDeleteModal" tabindex="-1" role="dialog" aria-labelledby="userDeleteModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="userDeleteModalLabel">删除用户</h4>
+                <p class="modal-body">您正在删除用户，请谨慎操作！</p>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="user-delete-input"><span class="error-text">*</span>确认删除</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="user-delete-input" placeholder="请输入：我确认删除+要删除的用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="user-delete-password-input"><span class="error-text">*</span>管理密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="user-delete-password-input" placeholder="请输入您的管理员密码">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="user-delete-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

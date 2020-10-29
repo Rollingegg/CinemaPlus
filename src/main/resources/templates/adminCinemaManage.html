@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>影院管理</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cinemaHall.css"/>
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/adminCinemaManage.js"></script>
+    <script src="/js/adminRoleManage.js"></script>
+
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage" id="nav-movie-manage" style="color: #9d9d9d"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage" id="nav-schedule-manage" style="color: #9d9d9d"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" id="nav-activity-manage" style="color: #9d9d9d"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation" class="active"><a href="#" id="nav-hall-manage"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/member/manage" id="nav-member-manage" style="color: #9d9d9d"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic" id="nav-statistics" style="color: #9d9d9d"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation"><a href="/admin/account/manage" id="nav-account-manage" style="color: #9d9d9d"><i class="icon-user-md"></i> 用户管理</a></li>
+        </ul>
+    </div>
+    <div class="content-container">
+        <div class="content-item">
+            <span class="title gray-text">常规设置</span>
+            <div class="content-card card">
+                <span class="">用户可见排片日期：</span><span id="can-see-num"></span>
+                <a style="margin-left: 20px;" class="primary-text" id="canview-modify-btn">修改</a>
+                <input type="number" class="form-control" id="canview-set-input" style="display: none;width: 200px;">
+                <a style="display: none" class="primary-text" id="canview-confirm-btn">确认</a>
+            </div>
+        </div>
+
+        <div class="content-item" id="setting-refund">
+            <span class="title gray-text">用户退票策略设置</span>
+            <div class="content-card card">
+                <div style="line-height: 40px">
+                    <span class="">全额退款时间区间：电影开场前&nbsp;</span><span id="all-refund-time"></span><span>&nbsp;小时以上</span>
+                    <a style="margin-left: 20px;" class="primary-text" id="all-refund-modify-btn">修改</a>
+                    <input type="number" class="form-control" id="all-refund-set-input" style="display: none;width: 200px;">
+                    <a style="display: none" class="primary-text" id="all-refund-confirm-btn">确认</a>
+                </div>
+                <div style="line-height: 40px">
+                    <span class="">部分退款时间区间：电影开场前&nbsp;</span>
+                    <span id="part-refund-start"></span>
+                    <span>&nbsp;小时至电影开场前</span>
+                    <span id="part-refund-end"></span>
+                    <span>&nbsp;小时</span>
+                </div>
+                <div style="line-height: 40px">
+                    <span class="">无法退款时间区间：电影开场前&nbsp;</span>
+                    <span id="none-refund-time"></span>
+                    <span>&nbsp;小时及以后</span>
+                    <a style="margin-left: 20px;" class="primary-text" id="part-refund-end-modify-btn">修改</a>
+                    <input type="number" class="form-control" id="part-refund-end-set-input" style="display: none;width: 200px;">
+                    <a style="display: none" class="primary-text" id="part-refund-end-confirm-btn">确认</a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="content-item" id="setting-halls">
+            <div>
+            <span class="title gray-text">影厅管理</span>
+            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#hallAddModal" onclick="getHallModule()"><i class="icon-plus-sign"></i>新增影厅</button>
+            </div>
+            <div class="content-card card" id="hall-card">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增影厅的界面模板-->
+<div class="modal fade" id="hallAddModal" tabindex="-1" role="dialog" aria-labelledby="hallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增影厅</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="hall-name-input"><span class="error-text">*</span>影厅名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="hall-name-input" placeholder="请输入影厅名称">
+                        </div>
+                    </div>
+                </form>
+                <!--接下来是座位的选择-->
+                <div class="content-card card" id="hall-card-add">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="line">
+                    <div id="seat-detail">已选中n个座位</div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="add-cancel-btn">取消</button>
+                <button type="button" class="btn btn-primary" id="hall-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="hallEditModal" tabindex="-1" role="dialog" aria-labelledby="hallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改影厅</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="hall-edit-name-input"><span class="error-text">*</span>影厅名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="hall-edit-name-input" placeholder="请输入影厅名称">
+                        </div>
+                    </div>
+                </form>
+                <!--接下来是座位的选择-->
+                <div class="content-card card" id="hall-card-edit">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="line">
+                    <div id="seat-edit-detail">已选中n个座位</div>
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="edit-cancel-btn">取消</button>
+                <button type="button" class="btn btn-primary" id="hall-edit-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--删除影厅的模板-->
+<div class="modal fade" id="hallDeleteModal" tabindex="-1" role="dialog" aria-labelledby="hallDeleteModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="hallDeleteModalLabel">删除影厅</h4>
+            </div>
+            <div class="modal-body">
+                <h3>你确认要删除该影厅吗？</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="hall-delete-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

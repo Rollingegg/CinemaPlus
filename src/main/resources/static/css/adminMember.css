@@ -1,0 +1,104 @@
+.content-member_card{
+
+}
+.card {
+    padding: 30px 40px;
+    color: #444444;
+    margin-bottom: 40px;
+}
+
+.card .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0 5px 0;
+}
+
+.card .header .title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.card .header .card-title {
+    color: gold;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.card .header .state {
+    font-size: 16px;
+    color: #ec971f;
+}
+
+.card .line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card .line hr {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+/* info为vip信息样式 */
+.card .info {
+    color: #f2eada;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    border: 3px solid #464547;
+    border-radius: 10px;
+    background-color: #464547;
+}
+
+.card .info .price {
+    color: #adadad;
+    font-size: 24px;
+}
+
+.card .info .price b {
+    color: #ffffff;
+    font-size: 32px;
+}
+
+.card .info .description {
+    color: #adadad;
+}
+
+.card .info .discount {
+    color: #adadad;
+}
+
+.card .info .content {
+    color: #f2eada;
+    font-size: 15px;
+    width: 30%;
+}
+
+.card .info .content .line {
+    color: #f2eada;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 3px 0;
+}
+
+.card .info button {
+    margin-top: 20px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    background: #1caf9a;
+    font-size: 16px;
+    color: #fff;
+    line-height: 26px;
+    text-align: center
+}
+.content-header {
+    display: flex;
+    justify-content: space-between;
+}

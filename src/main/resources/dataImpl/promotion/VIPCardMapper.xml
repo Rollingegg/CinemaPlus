@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.promotion.VIPCardMapper">
+    <insert id="insertOneCard" parameterType="com.example.cinema.po.VIPCard"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into vip_card_user(user_id,card_type,balance)
+        values(#{userId},#{type}, #{balance})
+    </insert>
+
+    <select id="selectCardById" resultMap="VIPCard">
+        select * from vip_card_user where id=#{id}
+    </select>
+
+    <select id="selectCardByUserId" resultMap="VIPCard">
+        select * from vip_card_user where user_id=#{userId}
+    </select>
+
+    <resultMap id="VIPCard" type="com.example.cinema.po.VIPCard">
+        <result column="join_time" property="joinDate"></result>
+        <result column="id" property="id"></result>
+        <result column="card_type" property="type"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="balance" property="balance"></result>
+    </resultMap>
+
+    <update id="updateCardBalance" >
+        update vip_card_user set balance = #{balance} where user_id=#{userId}
+    </update>
+
+    <select id="selectCardInfoById" resultMap="VIPCardInfo">
+        select * from vip_card where id=#{id}
+    </select>
+
+    <select id="selectCardInfoByUserId" resultMap="VIPCardInfo">
+        select * from vip_card right join vip_card_user on vip_card.type=vip_card_user.card_type where user_id=#{userId}
+    </select>
+
+    <select id="selectAllCardInfo" resultMap="VIPCardInfo">
+        select * from vip_card
+        order by vip_card.price
+    </select>
+
+    <select id="selectCardInfoByType" resultMap="VIPCardInfo">
+        select * from vip_card where type=#{type}
+    </select>
+
+    <resultMap id="VIPCardInfo" type="com.example.cinema.po.VIPCardInfo">
+        <result column="type" property="type"></result>
+        <result column="discount" property="discount"></result>
+        <result column="target_amount" property="targetAmount"></result>
+        <result column="bonus_amount" property="bonusAmount"></result>
+        <result column="price" property="price"></result>
+    </resultMap>
+
+    <select id="queryCardIdByType" resultType="int">
+        select id from vip_card where type=#{type}
+    </select>
+
+    <insert id="insertOneCardInfo" parameterType="com.example.cinema.po.VIPCardInfo"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into vip_card(type, discount, target_amount, bonus_amount, price)
+        values(#{type},#{discount}, #{targetAmount}, #{bonusAmount}, #{price})
+    </insert>
+
+    <update id="updateCardInfoWithAmount">
+        update vip_card
+        set target_amount=#{targetAmount},bonus_amount=#{bonusAmount}
+        where type=#{type}
+    </update>
+
+    <update id="updateCardInfo">
+        update vip_card
+        set target_amount = #{targetAmount}, bonus_amount=#{bonusAmount},discount=#{discount},price=#{price}
+        where type=#{type}
+    </update>
+
+    <select id="getDiscountByCardType" resultType="double">
+        select discount from vip_card where type=#{type}
+    </select>
+
+</mapper>

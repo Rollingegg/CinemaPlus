@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择座位</title>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminAccountDetail.css"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/css/newCommon.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/style.css"/>
+    <link rel="stylesheet" href="/css/cssForIndex/style-responsive.css">
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userMovieBuy.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cinemaHall.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/movieDetail.js"></script>
+    <script src="/js/adminMovieBuy.js"></script>
+    <script src="/js/adminRoleManage.js"></script>
+    <script src="/js/adminLockSeat.js"></script>
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage" style="color: #9d9d9d"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage" style="color: #9d9d9d"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/member/manage" style="color: #9d9d9d"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic" style="color: #9d9d9d"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation"><a href="/admin/account/manage" style="color: #9d9d9d"><i class="icon-user-md"></i> 用户管理</a></li>
+
+        </ul>
+    </div>
+    <div class="content-container">
+        <div class="card col-md-12" style="width: auto; border-color: white">
+            <div class="col-md-offset-1" id="seat-state" style="padding-left: 5px; padding-right: 5px; margin-left: 0px; margin-right: 0px">
+                <ol class="breadcrumb col-md-12" style="background-color: #f2eada">
+                    <li class="col-md-4" style="color: #464547"><a href="#" class="active">1. 选座</a></li>
+                    <li class="col-md-4" style="color: #737373">2. 确认订单，支付</li>
+                    <li class="col-md-4" style="color: #737373">3. 支付成功</li>
+                </ol>
+
+                <div class="seat-content col-md-12">
+                    <div class="col-md-8 content-card" id="hall-card">
+                    </div>
+
+                    <div class="col-md-4 movie-detail">
+                        <div class="line">
+                            <div class="name img-wrapper">
+                                <img id="movie-img">
+                            </div>
+                            <div class="info" style="line-height: 20px; font-size: 14px">
+                                <div id="movie-name"></div>
+                                <div>语言：<span id="movie-language"></span></div>
+                                <div>类型：<span id="movie-type"></span></div>
+                                <div>片长：<span id="movie-length"></span>分钟</div>
+                                <div>票价：<span id="schedule-fare"></span>元/张</div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="line" style="line-height: 25px; font-size: 18px">
+                            <div class="name" style="line-height: 25px; font-size: 18px">影厅：</div>
+                            <div id="schedule-hall-name"></div>
+                        </div>
+                        <div class="line" style="line-height: 25px; font-size: 18px">
+                            <div class="name">场次：</div>
+                            <div id="schedule-time"></div>
+                        </div>
+                        <div class="line" style="line-height: 25px; font-size: 18px">
+                            <div class="name">座位：</div>
+                            <div id="seat-detail">还未选择座位</div>
+                        </div>
+                        <hr/>
+                        <button id="order-confirm-btn" class="btn btn-primary" onclick="orderConfirmClick()"
+                                disabled="disabled">
+                            确认下单
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-10 col-md-offset-1" id="order-state" style="display: none;">
+                <ol class="breadcrumb col-md-12">
+                    <li class="col-md-4" style="color: #737373">1. 选座</li>
+                    <li class="col-md-4" style="color: #464547"><a href="#" class="active">2. 确认订单，支付</a></li>
+                    <li class="col-md-4" style="color: #737373">3. 支付成功</li>
+                </ol>
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr style="background-color: #464547; color: #f2eada;">
+                        <th>电影</th>
+                        <th>场次</th>
+                        <th>票数/座位</th>
+                        <th>单价(元)</th>
+                        <th>总价(元)</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div id="order-movie-name"></div>
+                        </td>
+                        <td>
+                            <div id="order-schedule-hall-name"></div>
+                            <div id="order-schedule-time"></div>
+                        </td>
+                        <td id="order-tickets">
+                        </td>
+                        <td id="order-schedule-fare"></td>
+                        <td><b id="order-total"></b></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+<!--                <div class="order-info">-->
+<!--                    <div>-->
+<!--                        优惠券：-->
+<!--                        <select style="height: 30px;" id="order-coupons"-->
+<!--                                onchange="changeCoupon(this.options.selectedIndex)">-->
+<!--                            暂无可用的优惠券-->
+<!--                        </select>-->
+<!--                    </div>-->
+
+<!--                    <div>-->
+<!--                        <div class="item" id="order-footer-total"></div>-->
+<!--                        <div class="item" id="order-discount"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <hr class="dashed-line"/>
+
+                <div class="order-footer">
+                    <div class="item" align="center">需支付：<b id="order-actual-total" style="font-size: 44px; color:#464547;"></b></div>
+                    <button class="item btn btn-primary" data-toggle="modal" data-target="#buyModal" style="width: 250px; align-self: center">确认订单，立即支付</button>
+                </div>
+            </div>
+
+            <div class="col-md-10 col-md-offset-1" id="success-state" style="display: none;">
+                <ol class="breadcrumb col-md-12">
+                    <li class="col-md-4" style="color: #737373">1. 选座</li>
+                    <li class="col-md-4" style="color: #737373">2. 确认订单，支付</li>
+                    <li class="col-md-4" style="color: #464547"><a href="#" class="active">3. 支付成功</a></li>
+                </ol>
+
+                <div class="success-notice" style="text-align: center">
+                    <img src="/images/success.png"/>
+                    <div class="hint">出票成功！</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="align-self: center; margin-top: 150px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">付款</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+                    <li role="presentation" class="active" id="member-pay" onclick="switchPay(0)"><a href="#">会员卡支付</a></li>
+                    <li role="presentation" id="nonmember-pay" onclick="switchPay(1)"><a href="#">银行卡支付</a></li>
+                </ul>
+
+                <div id="modal-body-member" style="margin-bottom: 20px;">
+                    <div id="member-balance"><b>会员卡余额：</b>&nbsp;&nbsp;90元</div>
+                </div>
+
+                <div id="modal-body-nonmember" style="display: none;">
+                    <div class="form-group">
+                        <label for="userBuy-cardNum">银行卡号</label>
+                        <input class="form-control" id="userBuy-cardNum" placeholder="请输入银行卡号">
+                        <p id="userBuy-cardNum-error" class="notice">银行卡号不能为空</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="userBuy-cardPwd">密码</label>
+                        <input type="password" class="form-control" id="userBuy-cardPwd" placeholder="请输入密码">
+                        <p id="userBuy-cardPwd-error" class="notice">密码不能为空</p>
+                    </div>
+                </div>
+
+                <div id="pay-amount"><b>金额：</b>&nbsp;&nbsp;90元</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="payConfirmClick()" data-toggle="modal" data-target="#buyModal">确认支付</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

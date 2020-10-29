@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员管理</title>
+    <link rel="stylesheet" type="text/css" href="/css/newCommon.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/style.css"/>
+    <link rel="stylesheet" href="/css/cssForIndex/style-responsive.css">
+    <link rel="stylesheet" type="text/css" href="/css/cssForIndex/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminMember.css"/>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/adminMemberManage.js"></script>
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage" style="color: #9d9d9d"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage" style="color: #9d9d9d"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage" style="color: #9d9d9d"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/manage" style="color: #9d9d9d"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation" class="active"><a href="#"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic" style="color: #9d9d9d"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation"><a href="/admin/account/manage" style="color: #9d9d9d"><i class="icon-user-md"></i> 用户管理</a></li>
+        </ul>
+    </div>
+    <div class="content-container">
+        <div class="content-header">
+            <span class="title gray-text">会员管理</span>
+            <button type="button" onclick="recoverForm()" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#memberCardModal"><i class="icon-plus-sign"></i> 发布会员卡</button>
+        </div>
+        <div class="content-member_card">
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="memberCardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="cardModalLabel">发布会员卡</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-type-input"><span class="error-text">*</span>会员卡种类</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="card-type-input" placeholder="请输入会员卡种类">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-description-input">会员卡优惠描述</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="card-description-input" placeholder="请输入会员卡优惠描述">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-target-amount-input"><span class="error-text">*</span>需满金额</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="card-target-amount-input" placeholder="请输入会员卡充值优惠需满金额">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-bonus-amount-input"><span class="error-text">*</span>赠送金额</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="card-bonus-amount-input" placeholder="请输入会员卡充值优惠赠送金额">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-price-input"><span class="error-text">*</span>会员卡售价</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="card-price-input" placeholder="请输入会员卡售价">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="card-discount-input"><span class="error-text">*</span>购票折扣</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="card-discount-input" placeholder="请输入会员卡购票折扣">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="member-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
