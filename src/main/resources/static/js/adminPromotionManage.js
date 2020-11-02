@@ -90,7 +90,7 @@ $(document).ready(function() {
                description: $("#coupon-name-input").val(),
                name: $("#coupon-description-input").val(),
                targetAmount: $("#coupon-target-input").val(),
-               discountAmount: $("#coupon-VipDiscount-input").val(),
+               discountAmount: $("#coupon-discount-input").val(),
                startTime: $("#activity-start-date-input").val(),
                endTime: $("#activity-end-date-input").val()
            }

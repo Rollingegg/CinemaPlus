@@ -15,12 +15,12 @@ $(document).ready(function(){
 
     function renderMovieList(list) {
         // alert("in");
-        // $('#poster-show-list').empty();
+        $('#poster-show-list').empty();
         var movieDomStr = '';
         list.forEach(function (movie) {
             movieDomStr +=
                 "<li class=\"grid-item\" data-jkit=\"[show:delay=3000;speed=500;animation=fade]\">" +
-                "            <img src=\"" + movie.posterUrl +"\" width='340px' height='560px'>" +
+                "            <img src=\"" + movie.posterUrl +"\">" +
                 "            <a class=\"ajax-link\" href=\"/user/movieDetail?id=" + movie.id + "\">" +
                 "                <div class=\"grid-hover\">" +
                 "                    <h1>" + movie.name.split(' ', 1) + "</h1>" +
